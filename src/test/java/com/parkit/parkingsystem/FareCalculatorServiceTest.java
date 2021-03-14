@@ -9,6 +9,12 @@ import com.parkit.parkingsystem.service.FareCalculatorService;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
+import org.mockito.Mockito;
+import org.mockito.MockitoAnnotations;
+
+import static org.mockito.Mockito.*;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -18,18 +24,19 @@ import java.util.Date;
 
 public class FareCalculatorServiceTest {
 
-    private static FareCalculatorService fareCalculatorService;
     private Ticket ticket;
 
-    @BeforeAll
-    private static void setUp() {
-        TicketDAO ticketDAO = new TicketDAO();
-        fareCalculatorService = new FareCalculatorService(ticketDAO);
-    }
+    @Mock
+    TicketDAO ticketDAO;
+
+    @InjectMocks
+    FareCalculatorService fareCalculatorService;
 
     @BeforeEach
     private void setUpPerTest() {
+        MockitoAnnotations.initMocks(this);
         ticket = new Ticket();
+
     }
 
     @Test
@@ -150,6 +157,7 @@ public class FareCalculatorServiceTest {
 
     @Test
     public void calculateFareBikeWithRegularUserDiscount() {
+        when(ticketDAO.isVehicleNumberAlreadyInDatabase(ticket.getVehicleRegNumber())).thenReturn(true);
         Instant inTime = Instant.now();
         Instant outTime = inTime.plusSeconds(60 * 60);
         ParkingSpot parkingSpot = new ParkingSpot(1, ParkingType.BIKE, false);
@@ -162,8 +170,9 @@ public class FareCalculatorServiceTest {
 
     @Test
     public void calculateFareCarWithRegularUserDiscount() {
+        when(ticketDAO.isVehicleNumberAlreadyInDatabase(ticket.getVehicleRegNumber())).thenReturn(true);
         Instant inTime = Instant.now();
-        Instant outTime = inTime.plusSeconds(60* 60);
+        Instant outTime = inTime.plusSeconds(60 * 60);
         ParkingSpot parkingSpot = new ParkingSpot(1, ParkingType.CAR, false);
         ticket.setInTime(inTime);
         ticket.setOutTime(outTime);

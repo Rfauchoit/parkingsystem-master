@@ -10,6 +10,7 @@ import com.parkit.parkingsystem.util.InputReaderUtil;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
@@ -22,8 +23,9 @@ import static org.mockito.Mockito.*;
 @ExtendWith(MockitoExtension.class)
 public class ParkingServiceTest {
 
-    private static ParkingService parkingService;
 
+    @InjectMocks
+    ParkingService parkingService;
     @Mock
     private static InputReaderUtil inputReaderUtil;
     @Mock
@@ -31,14 +33,15 @@ public class ParkingServiceTest {
     @Mock
     private static TicketDAO ticketDAO;
 
+
     @BeforeEach
     private void setUpPerTest() {
         try {
             when(inputReaderUtil.readVehicleRegistrationNumber()).thenReturn("ABCDEF");
 
-            ParkingSpot parkingSpot = new ParkingSpot(1, ParkingType.CAR,false);
+            ParkingSpot parkingSpot = new ParkingSpot(1, ParkingType.CAR, false);
             Ticket ticket = new Ticket();
-            ticket.setInTime(Instant.now().minusSeconds(60*60));
+            ticket.setInTime(Instant.now().minusSeconds(60 * 60));
             ticket.setParkingSpot(parkingSpot);
             ticket.setVehicleRegNumber("ABCDEF");
             when(ticketDAO.getTicket(anyString())).thenReturn(ticket);
@@ -46,15 +49,15 @@ public class ParkingServiceTest {
 
             when(parkingSpotDAO.updateParking(any(ParkingSpot.class))).thenReturn(true);
 
-            parkingService = new ParkingService(inputReaderUtil, parkingSpotDAO, ticketDAO);
+
         } catch (Exception e) {
             e.printStackTrace();
-            throw  new RuntimeException("Failed to set up test mock objects");
+            throw new RuntimeException("Failed to set up test mock objects");
         }
     }
 
     @Test
-    public void processExitingVehicleTest(){
+    public void processExitingVehicleTest() {
         parkingService.processExitingVehicle();
         verify(parkingSpotDAO, Mockito.times(1)).updateParking(any(ParkingSpot.class));
     }
