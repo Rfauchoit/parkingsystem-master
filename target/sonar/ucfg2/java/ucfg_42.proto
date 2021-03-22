@@ -1,0 +1,16 @@
+
+Ecom.parkit.parkingsystem.model.Ticket#getOutTime()Ljava/time/Instant;p
+fC:/Users/Randy/Downloads/parkingsystem-master/src/main/java/com/parkit/parkingsystem/model/Ticket.java8 8("1*‘
+1p
+fC:/Users/Randy/Downloads/parkingsystem-master/src/main/java/com/parkit/parkingsystem/model/Ticket.java9 9(Ã
+…
+p
+fC:/Users/Randy/Downloads/parkingsystem-master/src/main/java/com/parkit/parkingsystem/model/Ticket.java9 9(
+%0java.time.Instant"__id*6*4'
+%com.parkit.parkingsystem.model.Ticket"	
+outTime"ç
+p
+fC:/Users/Randy/Downloads/parkingsystem-master/src/main/java/com/parkit/parkingsystem/model/Ticket.java9 9(
+
+%0java.time.InstantB)'
+%com.parkit.parkingsystem.model.Ticket

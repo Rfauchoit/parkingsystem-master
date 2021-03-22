@@ -1,0 +1,16 @@
+
+Dcom.parkit.parkingsystem.model.Ticket#getInTime()Ljava/time/Instant;p
+fC:/Users/Randy/Downloads/parkingsystem-master/src/main/java/com/parkit/parkingsystem/model/Ticket.java0 0("1*”
+1p
+fC:/Users/Randy/Downloads/parkingsystem-master/src/main/java/com/parkit/parkingsystem/model/Ticket.java1 1(À
+»
+p
+fC:/Users/Randy/Downloads/parkingsystem-master/src/main/java/com/parkit/parkingsystem/model/Ticket.java1 1(
+%0java.time.Instant"__id*5*3'
+%com.parkit.parkingsystem.model.Ticket"
+inTime"ç
+p
+fC:/Users/Randy/Downloads/parkingsystem-master/src/main/java/com/parkit/parkingsystem/model/Ticket.java1 1(
+
+%0java.time.InstantB)'
+%com.parkit.parkingsystem.model.Ticket
