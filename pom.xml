@@ -16,11 +16,8 @@
         <sonar.projectKey>Rfauchoit_parkingsystem-master</sonar.projectKey>
         <sonar.organization>rfauchoit</sonar.organization>
         <sonar.host.url>https://sonarcloud.io</sonar.host.url>
-<<<<<<< Updated upstream
 
-=======
         <sonar.login>b0a4e419c9ad790d61b3f7ae6a42d4de792d7e5c</sonar.login>
->>>>>>> Stashed changes
     </properties>
 
     <dependencies>
