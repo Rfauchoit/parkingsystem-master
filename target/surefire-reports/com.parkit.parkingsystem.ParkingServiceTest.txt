@@ -1,8 +1,15 @@
 -------------------------------------------------------------------------------
 Test set: com.parkit.parkingsystem.ParkingServiceTest
 -------------------------------------------------------------------------------
-<<<<<<< Updated upstream
-Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.006 s - in com.parkit.parkingsystem.ParkingServiceTest
-=======
-Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.007 s - in com.parkit.parkingsystem.ParkingServiceTest
->>>>>>> Stashed changes
+Tests run: 2, Failures: 0, Errors: 1, Skipped: 0, Time elapsed: 0.193 s <<< FAILURE! - in com.parkit.parkingsystem.ParkingServiceTest
+processIncomingVehicleTest  Time elapsed: 0.172 s  <<< ERROR!
+org.mockito.exceptions.misusing.UnnecessaryStubbingException: 
+
+Unnecessary stubbings detected.
+Clean & maintainable test code requires zero unnecessary code.
+Following stubbings are unnecessary (click to navigate to relevant line of code):
+  1. -> at com.parkit.parkingsystem.ParkingServiceTest.setUpPerTest(ParkingServiceTest.java:40)
+  2. -> at com.parkit.parkingsystem.ParkingServiceTest.setUpPerTest(ParkingServiceTest.java:42)
+  3. -> at com.parkit.parkingsystem.ParkingServiceTest.setUpPerTest(ParkingServiceTest.java:44)
+Please remove unnecessary stubbings or use 'lenient' strictness. More info: javadoc for UnnecessaryStubbingException class.
+
