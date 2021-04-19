@@ -18,6 +18,9 @@ import org.mockito.junit.jupiter.MockitoExtension;
 import java.time.Instant;
 import java.util.Date;
 
+import static org.junit.jupiter.api.Assertions.assertNull;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.*;
 
 @ExtendWith(MockitoExtension.class)
@@ -36,22 +39,44 @@ public class ParkingServiceTest {
 
     @BeforeEach
     private void setUpPerTest() {
-        try {
-            when(inputReaderUtil.readVehicleRegistrationNumber()).thenReturn("ABCDEF");
+       
+    }
 
-            when(ticketDAO.updateTicket(any(Ticket.class))).thenReturn(true);
+    @Test
+    public void processIncomingVehicleTest() {
+    	 try {
+             when(inputReaderUtil.readVehicleRegistrationNumber()).thenReturn("ABCDEF");
 
-            when(parkingSpotDAO.updateParking(any(ParkingSpot.class))).thenReturn(true);
 
 
-        } catch (Exception e) {
-            e.printStackTrace();
-            throw new RuntimeException("Failed to set up test mock objects");
-        }
+             when(parkingSpotDAO.updateParking(any(ParkingSpot.class))).thenReturn(true);
+
+
+         } catch (Exception e) {
+             e.printStackTrace();
+             throw new RuntimeException("Failed to set up test mock objects");
+         }
+    	when(parkingSpotDAO.getNextAvailableSlot(ParkingType.CAR)).thenReturn(1);
+        when(inputReaderUtil.readSelection()).thenReturn(1);
+        parkingService.processIncomingVehicle();
+        verify(ticketDAO, Mockito.times(1)).saveTicket(any());
     }
 
     @Test
     public void processExitingVehicleTest() {
+    	 try {
+             when(inputReaderUtil.readVehicleRegistrationNumber()).thenReturn("ABCDEF");
+
+
+
+             when(parkingSpotDAO.updateParking(any(ParkingSpot.class))).thenReturn(true);
+
+
+         } catch (Exception e) {
+             e.printStackTrace();
+             throw new RuntimeException("Failed to set up test mock objects");
+         }
+    	when(ticketDAO.updateTicket(any(Ticket.class))).thenReturn(true);
         ParkingSpot parkingSpot = new ParkingSpot(1, ParkingType.CAR, false);
         Ticket ticket = new Ticket();
         ticket.setInTime(Instant.now().minusSeconds(60 * 60));
@@ -62,11 +87,42 @@ public class ParkingServiceTest {
         verify(parkingSpotDAO, Mockito.times(1)).updateParking(any(ParkingSpot.class));
     }
 
+    
     @Test
-    public void processIncomingVehicleTest() {
-        when(inputReaderUtil.readSelection()).thenReturn(1);
-        parkingService.processIncomingVehicle();
-        //verify(parkingSpotDAO, Mockito.times(1)).updateParking(any(ParkingSpot.class));
+    public void getNextParkingNumberIfAvailableIf() {
+    	//Arrange
+    	when(parkingSpotDAO.getNextAvailableSlot(Mockito.any())).thenReturn(1);
+    	when(inputReaderUtil.readSelection()).thenReturn(1);
+    	//Act
+    	ParkingSpot parkingSpot = parkingService.getNextParkingNumberIfAvailable();
+    	//Assert
+    	verify(parkingSpotDAO, Mockito.times(1)).getNextAvailableSlot(any(ParkingType.class));
+    	assertEquals( parkingSpot);}
+    
+    @Test
+    public void getNextParkingNumberIfAvailableElse() {
+    	//Arrange
+    	when(parkingSpotDAO.getNextAvailableSlot(Mockito.any())).thenReturn(-1);
+    	when(inputReaderUtil.readSelection()).thenReturn(1);
+    	//Act
+    	ParkingSpot parkingSpot = parkingService.getNextParkingNumberIfAvailable();
+    	//Assert
+    	verify(parkingSpotDAO, Mockito.times(1)).getNextAvailableSlot(any(ParkingType.class));
+    	assertNull(parkingSpot);}
+    	
+     @Test 
+     public void getNextParkingNumberIfAvailableIllegalException() {
+    	  //Arrange
+    	   when(inputReaderUtil.readSelection()).thenReturn(3);
+    	   //Act
+    	    ParkingSpot parkingSpot = parkingService.getNextParkingNumberIfAvailable();
+    	    //Assert
+    	    assertThrows(IllegalArgumentException.class, parkingSpot);
+    	
     }
 
+	private void assertThrows(Class<IllegalArgumentException> class1, ParkingSpot parkingSpot) {
+		// TODO Auto-generated method stub
+		
+	}
 }
