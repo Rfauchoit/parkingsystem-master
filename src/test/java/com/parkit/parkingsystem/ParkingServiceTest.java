@@ -10,6 +10,7 @@ import com.parkit.parkingsystem.util.InputReaderUtil;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
+import org.junit.jupiter.api.function.Executable;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.Mockito;
@@ -19,7 +20,6 @@ import java.time.Instant;
 import java.util.Date;
 
 import static org.junit.jupiter.api.Assertions.assertNull;
-import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.*;
 
@@ -97,7 +97,7 @@ public class ParkingServiceTest {
     	ParkingSpot parkingSpot = parkingService.getNextParkingNumberIfAvailable();
     	//Assert
     	verify(parkingSpotDAO, Mockito.times(1)).getNextAvailableSlot(any(ParkingType.class));
-    	assertEquals( parkingSpot);}
+    	assertEquals(parkingSpot.getId(), 1);}
     
     @Test
     public void getNextParkingNumberIfAvailableElse() {
@@ -110,19 +110,15 @@ public class ParkingServiceTest {
     	verify(parkingSpotDAO, Mockito.times(1)).getNextAvailableSlot(any(ParkingType.class));
     	assertNull(parkingSpot);}
     	
-     @Test 
+     @Test
      public void getNextParkingNumberIfAvailableIllegalException() {
     	  //Arrange
     	   when(inputReaderUtil.readSelection()).thenReturn(3);
     	   //Act
-    	    ParkingSpot parkingSpot = parkingService.getNextParkingNumberIfAvailable();
-    	    //Assert
-    	    assertThrows(IllegalArgumentException.class, parkingSpot);
-    	
-    }
+    	   ParkingSpot parkingSpot = parkingService.getNextParkingNumberIfAvailable();
+    	   //Assert
+    	    assertNull(parkingSpot);
+    	   
 
-	private void assertThrows(Class<IllegalArgumentException> class1, ParkingSpot parkingSpot) {
-		// TODO Auto-generated method stub
-		
-	}
+}
 }

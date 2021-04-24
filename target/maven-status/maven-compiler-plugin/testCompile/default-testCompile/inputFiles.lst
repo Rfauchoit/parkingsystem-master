@@ -1,5 +1,9 @@
-C:\Users\Randy\Downloads\parkingsystem-master\src\test\java\com\parkit\parkingsystem\integration\ParkingDataBaseIT.java
-C:\Users\Randy\Downloads\parkingsystem-master\src\test\java\com\parkit\parkingsystem\integration\service\DataBasePrepareService.java
-C:\Users\Randy\Downloads\parkingsystem-master\src\test\java\com\parkit\parkingsystem\integration\config\DataBaseTestConfig.java
-C:\Users\Randy\Downloads\parkingsystem-master\src\test\java\com\parkit\parkingsystem\ParkingServiceTest.java
-C:\Users\Randy\Downloads\parkingsystem-master\src\test\java\com\parkit\parkingsystem\FareCalculatorServiceTest.java
+C:\parkingsystem-master\src\test\java\com\parkit\parkingsystem\dao\ParkingSpotDAOTest.java
+C:\parkingsystem-master\src\test\java\com\parkit\parkingsystem\integration\ParkingDataBaseIT.java
+C:\parkingsystem-master\src\test\java\com\parkit\parkingsystem\dao\TicketDAOTest.java
+C:\parkingsystem-master\src\test\java\com\parkit\parkingsystem\util\InputReaderUtilTest.java
+C:\parkingsystem-master\src\test\java\com\parkit\parkingsystem\ParkingServiceTest.java
+C:\parkingsystem-master\src\test\java\com\parkit\parkingsystem\integration\service\DataBasePrepareService.java
+C:\parkingsystem-master\src\test\java\com\parkit\parkingsystem\integration\config\DataBaseTestConfig.java
+C:\parkingsystem-master\src\test\java\com\parkit\parkingsystem\InteractiveShellTest.java
+C:\parkingsystem-master\src\test\java\com\parkit\parkingsystem\FareCalculatorServiceTest.java
