@@ -19,9 +19,7 @@ public class FareCalculatorService {
         if ((ticket.getOutTime() == null) || (ticket.getOutTime().isBefore((ticket.getInTime())))) {
             throw new IllegalArgumentException("Out time provided is incorrect:" + ticket.getOutTime().toString());
         }
-
-
-        //TODO: Some tests are failing here. Need to check if this logic is correct
+        
         Duration duration = Duration.between(ticket.getInTime(), ticket.getOutTime());
 
         double duree = duration.getSeconds() / 3600.0;
