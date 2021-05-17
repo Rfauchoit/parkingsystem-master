@@ -19,39 +19,37 @@ public class FareCalculatorService {
 <span class="pc bpc" id="L19" title="1 of 4 branches missed.">        if ((ticket.getOutTime() == null) || (ticket.getOutTime().isBefore((ticket.getInTime())))) {</span>
 <span class="fc" id="L20">            throw new IllegalArgumentException(&quot;Out time provided is incorrect:&quot; + ticket.getOutTime().toString());</span>
         }
+        
+<span class="fc" id="L23">        Duration duration = Duration.between(ticket.getInTime(), ticket.getOutTime());</span>
 
-
-        //TODO: Some tests are failing here. Need to check if this logic is correct
-<span class="fc" id="L25">        Duration duration = Duration.between(ticket.getInTime(), ticket.getOutTime());</span>
-
-<span class="fc" id="L27">        double duree = duration.getSeconds() / 3600.0;</span>
-<span class="fc bfc" id="L28" title="All 2 branches covered.">        if (duree &lt;= 0.5) {</span>
-<span class="fc" id="L29">            ticket.setPrice(0);</span>
-<span class="fc" id="L30">            return;</span>
+<span class="fc" id="L25">        double duree = duration.getSeconds() / 3600.0;</span>
+<span class="fc bfc" id="L26" title="All 2 branches covered.">        if (duree &lt;= 0.5) {</span>
+<span class="fc" id="L27">            ticket.setPrice(0);</span>
+<span class="fc" id="L28">            return;</span>
         }
 
         double ratePerHour;
-<span class="pc bpc" id="L34" title="1 of 3 branches missed.">        switch (ticket.getParkingSpot().getParkingType()) {</span>
+<span class="pc bpc" id="L32" title="1 of 3 branches missed.">        switch (ticket.getParkingSpot().getParkingType()) {</span>
 
             case CAR: {
-<span class="fc" id="L37">                ratePerHour = 1.5;</span>
+<span class="fc" id="L35">                ratePerHour = 1.5;</span>
 
 
-<span class="fc" id="L40">                break;</span>
+<span class="fc" id="L38">                break;</span>
             }
             case BIKE: {
-<span class="fc" id="L43">                ratePerHour = 1.0;</span>
+<span class="fc" id="L41">                ratePerHour = 1.0;</span>
 
-<span class="fc" id="L45">                break;</span>
+<span class="fc" id="L43">                break;</span>
             }
             default:
-<span class="nc" id="L48">                throw new IllegalArgumentException(&quot;Unknown Parking Type&quot;);</span>
+<span class="nc" id="L46">                throw new IllegalArgumentException(&quot;Unknown Parking Type&quot;);</span>
         }
-<span class="fc bfc" id="L50" title="All 2 branches covered.">        if (ticketDAO.isVehicleNumberAlreadyInDatabase(ticket.getVehicleRegNumber()) ) {</span>
-<span class="fc" id="L51">            ticket.setPrice(duree * ratePerHour * 0.95);</span>
-<span class="fc" id="L52">        } else {</span>
-<span class="fc" id="L53">            ticket.setPrice(duree * ratePerHour);</span>
+<span class="fc bfc" id="L48" title="All 2 branches covered.">        if (ticketDAO.isVehicleNumberAlreadyInDatabase(ticket.getVehicleRegNumber()) ) {</span>
+<span class="fc" id="L49">            ticket.setPrice(duree * ratePerHour * 0.95);</span>
+        } else {
+<span class="fc" id="L51">            ticket.setPrice(duree * ratePerHour);</span>
         }
-<span class="fc" id="L55">    }</span>
+<span class="fc" id="L53">    }</span>
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.6.202009150832</span></div></body></html>

@@ -1,34 +1,0 @@
-
->com.parkit.parkingsystem.util.InputReaderUtil#readSelection()Ix
-nC:/Users/Randy/Downloads/parkingsystem-master/src/main/java/com/parkit/parkingsystem/util/InputReaderUtil.java ("6*‚
-4x
-nC:/Users/Randy/Downloads/parkingsystem-master/src/main/java/com/parkit/parkingsystem/util/InputReaderUtil.java (:"‚
-x
-nC:/Users/Randy/Downloads/parkingsystem-master/src/main/java/com/parkit/parkingsystem/util/InputReaderUtil.java (
-""*ï
-5x
-nC:/Users/Randy/Downloads/parkingsystem-master/src/main/java/com/parkit/parkingsystem/util/InputReaderUtil.java (9ê
-ç
-x
-nC:/Users/Randy/Downloads/parkingsystem-master/src/main/java/com/parkit/parkingsystem/util/InputReaderUtil.java (9	
-%2int"/java.lang.Integer#parseInt(Ljava/lang/String;)I*"
-java.lang.Integer*
-
-%1java.lang.String*
-4*Í
-6x
-nC:/Users/Randy/Downloads/parkingsystem-master/src/main/java/com/parkit/parkingsystem/util/InputReaderUtil.java (Ù
-Ö
-x
-nC:/Users/Randy/Downloads/parkingsystem-master/src/main/java/com/parkit/parkingsystem/util/InputReaderUtil.java) (-
-%0java.util.Scanner"__id*;*9/
--com.parkit.parkingsystem.util.InputReaderUtil"
-scanìé
-x
-nC:/Users/Randy/Downloads/parkingsystem-master/src/main/java/com/parkit/parkingsystem/util/InputReaderUtil.java) (8
-%1java.lang.String".java.util.Scanner#nextLine()Ljava/lang/String;*
-
-%0java.util.Scanner2
-nextLine()*
-5B1/
--com.parkit.parkingsystem.util.InputReaderUtil

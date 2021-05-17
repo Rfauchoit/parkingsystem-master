@@ -1,7 +1,0 @@
-organization=rfauchoit
-projectKey=Rfauchoit_parkingsystem-master
-serverUrl=https://sonarcloud.io
-serverVersion=8.0.0.18488
-dashboardUrl=https://sonarcloud.io/dashboard?id=Rfauchoit_parkingsystem-master
-ceTaskId=AXhbMBIRRC00k5Bgmrd-
-ceTaskUrl=https://sonarcloud.io/api/ce/task?id=AXhbMBIRRC00k5Bgmrd-
